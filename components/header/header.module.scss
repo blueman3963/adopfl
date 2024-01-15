@@ -1,0 +1,211 @@
+@use '/styles/media';
+
+.header {
+    position: fixed;
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px;
+    box-sizing: border-box;
+    animation: headerIntro;
+    animation-duration: 4s;
+    user-select: none;
+
+    & > div, & > a {
+        display: block;
+        text-decoration: none;
+        padding: 4px 12px;
+        border-radius: 40px;
+        background-color: #eee;
+        color: #222926;
+        font-size: 24px;
+        font-family: "aktiv-grotesk", Helvetica Neue, sans-serif;
+        transition: all 0.3s;
+        cursor: crosshair;
+
+        @include media.byMd {
+            &:hover {
+                background-color: #222926;
+                border-radius: 0;
+                color: #eee;
+    
+                & .bar, & > .mute > .mutebar {
+                    background-color: #eee;
+                }
+            }
+        }
+        
+
+        &.active {
+            background-color: #222926;
+            color: #eee;
+        }
+
+        @include media.onMd {
+            font-size: 20px;
+        }
+    }
+
+    .volume {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        position: relative;
+
+        &.muted {
+            .bar {
+                height: 8px;
+            }
+        }
+
+        .bar {
+            width: 4px;
+            height: 20px;
+            background-color: #222926;
+            animation: volumeBar;
+            animation-duration: 2s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            transition: height 0.3s;
+
+            &:nth-child(2) {
+                animation-delay: 0.67s;
+            }
+            &:nth-child(3) {
+                animation-delay: 1.33s;
+            }
+        }
+
+        .mute {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+
+            & > div {
+                width: 4px;
+                height: 8px;
+                background-color: #222926;
+            }
+
+        }
+
+        @keyframes volumeBar {
+            0% {
+                transform: scaleY(1);
+            }
+            50% {
+                transform: scaleY(0.4);
+            }
+            100% {
+                transform: scaleY(1);
+            }
+        }
+    }
+}
+
+@keyframes headerIntro {
+    0% {
+        transform: translateY(-80px);
+    }
+    75% {
+        transform: translateY(-80px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.greetings {
+    position: fixed;
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    mix-blend-mode: difference;
+    font-size: 2vw;
+    line-height: 150%;
+    text-align: center;
+    font-family: "Mint", Helvetica Neue, sans-serif;
+    animation: greetingsIntro;
+    animation-duration: 4s;
+    pointer-events: none;
+
+    span {
+        white-space: pre-wrap;
+    }
+
+    @include media.onMd {
+        font-size: 8vw;
+        padding: 40px;
+        box-sizing: border-box;
+    }
+}
+
+@keyframes greetingsIntro {
+    0% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.content {
+    width: 600px;
+    height: calc(100vh - 120px);
+    top: 78px;
+    left: 50vw;
+    transform: translateX(-50%);
+    position: fixed;
+    background-color: #222926;
+    overflow: hidden;
+    height: 0px;
+    transition: 0.3s;
+    color: #eee;
+    box-sizing: border-box;
+
+    .about {
+        padding: 40px;
+        font-size: 26px;
+        line-height: 200%;
+        height: 100%;
+        overflow: scroll;
+        font-family: "Mint", Helvetica Neue, sans-serif;
+        white-space: pre-wrap;
+        box-sizing: border-box;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        @include media.onMd {
+            font-size: 20px;
+        }
+    }
+
+    &.active {
+        height: calc(100vh - 120px);
+    }
+
+    @include media.onMd {
+        width: calc(100vw - 24px);
+        top: auto;
+        bottom: 12px;
+
+        &.active {
+            height: calc(100% - 90px);
+        }
+    }
+}

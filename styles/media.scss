@@ -1,0 +1,8 @@
+@mixin onMd {
+    @media only screen and (max-width: 768px) { @content; }
+}
+
+@mixin byMd {
+    @media only screen and (min-width: 768px) { @content; }
+}
+  

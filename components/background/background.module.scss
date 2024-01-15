@@ -1,0 +1,99 @@
+@use '/styles/media';
+
+.wrapper {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #eee;
+    z-index: -1;
+}
+
+.start {
+    position: fixed;
+    left: 50vw;
+    bottom: 100px;
+    transform: translate(-50%, -50%) rotate(-12deg);
+    text-align: center;
+    padding: 4px 24px;
+    border-radius: 100px;
+    background-color: #fff;
+    font-family: "aktiv-grotesk", Helvetica Neue, sans-serif;
+    font-size: 48px;
+    user-select: none;
+    transition: all 0.3s;
+
+    @include media.byMd {
+        &:hover {
+            transform: translate(-50%, -50%) rotate(-8deg);
+            background-color: #222926;
+            color: #fff;
+            border-radius: 0;
+        }
+    }
+
+    @include media.onMd {
+        font-size: 32px;
+        bottom: 40px;
+    }
+    
+}
+
+.color {
+    position: fixed;
+    right: calc(50vw + 20px);
+    bottom: 240px;
+    transform: translateY(-50%) rotate(12deg);
+    text-align: center;
+    padding: 12px 24px;
+    border-radius: 100px;
+    background-color: #fff;
+    font-family: "aktiv-grotesk", Helvetica Neue, sans-serif;
+    font-size: 24px;
+    user-select: none;
+    transition: all 0.3s;
+
+    @include media.byMd {
+        &:hover {
+            transform: translateY(-50%) rotate(8deg);
+            background-color: #222926;
+            color: #eee;
+            border-radius: 0;
+        }
+    }
+
+    @include media.onMd {
+        font-size: 20px;
+        bottom: 140px;
+    }
+}
+
+.shape {
+    position: fixed;
+    left: calc(50vw + 0px);
+    bottom: 260px;
+    transform: translateY(-50%) rotate(-24deg);
+    text-align: center;
+    padding: 12px 24px;
+    border-radius: 100px;
+    background-color: #fff;
+    font-family: "aktiv-grotesk", Helvetica Neue, sans-serif;
+    font-size: 24px;
+    user-select: none;
+    transition: all 0.3s;
+
+    @include media.byMd {
+        &:hover {
+            transform: translateY(-50%) rotate(-20deg);
+            background-color: #222926;
+            color: #eee;
+            border-radius: 0;
+        }
+    }
+
+    @include media.onMd {
+        font-size: 20px;
+        bottom: 160px;
+    }
+}
